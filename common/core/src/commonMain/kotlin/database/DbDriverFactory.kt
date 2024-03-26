@@ -1,7 +1,7 @@
 package database
 
 import com.squareup.sqldelight.db.SqlDriver
-import platform.PlatformConfiguration
+import PlatformConfiguration
 
 expect class DbDriverFactory(platformConfiguration: PlatformConfiguration) {
     fun createDriver(schema: SqlDriver.Schema, name: String): SqlDriver
