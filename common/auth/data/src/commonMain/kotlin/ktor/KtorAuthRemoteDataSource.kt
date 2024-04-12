@@ -8,7 +8,7 @@ import io.ktor.http.path
 import model.Token
 
 class KtorAuthRemoteDataSource(
-    val httpClient: HttpClient
+    private val httpClient: HttpClient
 ) {
     suspend fun performLogin(request: KtorLoginRequest): Token {
         return httpClient.post {

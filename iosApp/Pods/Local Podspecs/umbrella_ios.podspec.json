@@ -1,13 +1,13 @@
 {
   "name": "umbrella_ios",
   "version": "0.0.1",
-  "homepage": "https://github.com/mau89/kpm_playzone",
+  "homepage": "https://google.com",
   "source": {
     "http": ""
   },
   "authors": "",
   "license": "",
-  "summary": "PlayZone IOS SDK",
+  "summary": "PlayZone iOS SDK",
   "vendored_frameworks": "build/cocoapods/framework/SharedSDK.framework",
   "libraries": "c++",
   "platforms": {

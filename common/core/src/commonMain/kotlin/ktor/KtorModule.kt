@@ -41,8 +41,7 @@ internal val ktorModule = DI.Module("ktorModule") {
             }
 
             defaultRequest {
-                url("https://id.heroku.com")
-//                url("https://playzone-backend.herokuapp.com")
+                url("https://playzone-backend.herokuapp.com")
                 header("Content-Type", "application/json; charset=UTF-8")
             }
         }

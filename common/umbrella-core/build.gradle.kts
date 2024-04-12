@@ -12,9 +12,8 @@ kotlin {
 
                 implementation(project(":common:auth:data"))
                 implementation(project(":common:games:data"))
-                implementation(project(":common:tournaments:data"))
 
-//                implementation(Dependencies.Kodein.core)
+                implementation(Dependencies.Kodein.core)
             }
         }
     }

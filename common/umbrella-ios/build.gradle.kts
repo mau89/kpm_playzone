@@ -35,7 +35,8 @@ kotlin {
                 implementation(project(":common:umbrella-core"))
             }
         }
-        ios{
+
+        iosMain {
             dependencies{
                 api(project(":common:core"))
                 api(project(":common:core-utils"))

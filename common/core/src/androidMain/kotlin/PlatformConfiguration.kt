@@ -1,3 +1,3 @@
 import android.content.Context
 
-actual class PlatformConfiguration(val androidContext: Context)
+actual class PlatformConfiguration constructor(val androidContext: Context)

@@ -18,7 +18,7 @@ class KtorGamesDataSource(private val httpClient: HttpClient) {
             header("Bearer-Authorization", "2bac6ef1-ca6d-42ca-96f3-923c68e88eca")
 
             url {
-                path("games/search")
+                path("/games/search")
                 setBody(KtorSearchRequest(searchQuery = ""))
             }
         }.body()

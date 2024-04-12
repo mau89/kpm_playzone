@@ -1,7 +1,6 @@
 package login
 
 import AuthRepository
-import android.util.Log
 import com.adeo.kviewmodel.BaseSharedViewModel
 import di.Inject
 import kotlinx.coroutines.launch
@@ -22,6 +21,7 @@ class LoginViewModel : BaseSharedViewModel<LoginViewState, LoginAction, LoginEve
             is LoginEvent.LoginClick -> sendLogin()
             is LoginEvent.PasswordChanged -> obtainPasswordChanged(viewEvent.value)
             is LoginEvent.RegistrationClick -> openRegistration()
+            LoginEvent.PasswordShowClick -> changePasswordVisibility()
         }
 
     }
@@ -57,10 +57,12 @@ class LoginViewModel : BaseSharedViewModel<LoginViewState, LoginAction, LoginEve
                     viewState.copy(isSending = false)
                 }
             } catch (e: Exception) {
-                Log.e("test", "sendLogin() ${e}")
                 viewState.copy(isSending = false)
             }
         }
     }
 
+    private fun changePasswordVisibility() {
+        viewState = viewState.copy(passwordHidden = !viewState.passwordHidden)
+    }
 }

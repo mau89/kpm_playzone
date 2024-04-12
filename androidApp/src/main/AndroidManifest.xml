@@ -5,12 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".PlayzoneApp"
+        android:name="com.example.kmp_playzone.android.PlayzoneApp"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.kmp_playzone.android.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

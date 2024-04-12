@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../common/umbrella-ios"
 
 SPEC CHECKSUMS:
-  umbrella_ios: 72a0325fc5a8b39f652169c6c676a15680983904
+  umbrella_ios: ac994833b58d4b59a2c8c8f89e1f52d0c1170491
 
 PODFILE CHECKSUM: 4dc55551e18d10ef6f379f8c06e54c385bd651c6
 

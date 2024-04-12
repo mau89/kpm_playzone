@@ -1,7 +1,9 @@
 object Dependencies {
 
     object Kodein {
-        const val core = "org.kodein.di:kodein-di:7.1.0"
+        private const val version = "7.18.0"
+
+        const val core = "org.kodein.di:kodein-di:$version"
     }
 
     object Settings {
@@ -61,7 +63,8 @@ object Dependencies {
     }
 
     object Android {
-        const val gradlePlugin = "com.android.tools.build:gradle:7.2.2"
+        private const val version = "7.2.2"
+        const val gradlePlugin = "com.android.tools.build:gradle:$version"
         const val composeActivity = "androidx.activity:activity-compose:1.5.1"
 
         object Compose {

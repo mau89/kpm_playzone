@@ -5,11 +5,10 @@ import org.kodein.di.direct
 import org.kodein.di.singleton
 
 object PlatformSDK {
-    fun init(
-        configuration: PlatformConfiguration
-    ) {
+
+    fun init(configuration: PlatformConfiguration) {
         val umbrellaModule = DI.Module(
-            name = "umbrella",
+            name = "umbrellaModule",
             init = {
                 bind<PlatformConfiguration>() with singleton { configuration }
             }
