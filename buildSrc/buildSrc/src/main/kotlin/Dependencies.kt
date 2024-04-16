@@ -13,9 +13,9 @@ object Dependencies {
 
     object Image {
         object Coil {
-            const val version = "2.2.2"
-            const val core = "io.coil-kt:coil:2.2.2"
-            const val compose = "io.coil-kt:coil-compose:2.2.2"
+            const val version = "3.0.0-alpha06"
+            const val core = "io.coil-kt.coil3:coil:$version"
+            const val compose = "io.coil-kt.coil3:coil-compose:$version"
         }
     }
 

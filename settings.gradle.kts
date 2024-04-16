@@ -8,7 +8,7 @@ pluginManagement {
 
 rootProject.name = "kmp_playzone"
 include(":androidApp")
-include(":shared")
+include(":desktop")
 include(":common:auth:api")
 include(":common:auth:presentation")
 include(":common:auth:data")

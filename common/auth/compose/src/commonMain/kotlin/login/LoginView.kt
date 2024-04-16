@@ -10,9 +10,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Clear
+import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +28,8 @@ import androidx.compose.ui.unit.sp
 import login.models.LoginEvent
 import login.models.LoginViewState
 import theme.Theme
+import widgets.ActionButton
+import widgets.CommonTextField
 
 @Composable
 fun LoginView(state: LoginViewState, eventHandler: (LoginEvent) -> Unit) {
@@ -47,43 +53,28 @@ fun LoginView(state: LoginViewState, eventHandler: (LoginEvent) -> Unit) {
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            enabled = !state.isSending,
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Theme.colors.textFieldBackgroundColor,
-                textColor = Theme.colors.textFieldTextColor,
-                cursorColor = Theme.colors.highlightTextColor,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-            ),
-            shape = RoundedCornerShape(10.dp),
-            value = state.email,
-            onValueChange = {
-                eventHandler.invoke(LoginEvent.EmailChanged(it))
-            })
+        CommonTextField(text = state.email, hint = "Your login", enabled = !state.isSending) {
+            eventHandler.invoke(LoginEvent.EmailChanged(it))
+        }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
+        CommonTextField(
+            text = state.password,
+            hint = "Your password",
             enabled = !state.isSending,
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = Theme.colors.textFieldBackgroundColor,
-                textColor = Theme.colors.textFieldTextColor,
-                cursorColor = Theme.colors.highlightTextColor,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-            ),
-            shape = RoundedCornerShape(10.dp),
-            value = state.password,
-            onValueChange = {
-                eventHandler.invoke(LoginEvent.PasswordChanged(it))
-            })
+            isSecure = state.passwordHidden,
+            trailingIcon = {
+                Icon(
+                    imageVector = if (state.passwordHidden) Icons.Outlined.Clear else Icons.Outlined.Lock,
+                    contentDescription = "",
+                    modifier = Modifier.clickable { eventHandler.invoke(LoginEvent.PasswordShowClick) },
+                    tint = Theme.colors.highlightTextColor,
+                )
+            }
+        ) {
+            eventHandler.invoke(LoginEvent.PasswordChanged(it))
+        }
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -98,63 +89,10 @@ fun LoginView(state: LoginViewState, eventHandler: (LoginEvent) -> Unit) {
             )
         }
 
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Theme.colors.primaryAction
-            ),
-            enabled = !state.isSending,
-            shape = RoundedCornerShape(10.dp),
-            onClick = {
-                eventHandler.invoke(LoginEvent.LoginClick)
-            }
-        ) {
-            Text(
-                text = "Login Now", color = Theme.colors.thirdTextColor,
-                fontSize = 16.sp, fontWeight = FontWeight.Bold
-            )
+        Spacer(modifier = Modifier.height(84.dp))
+
+        ActionButton(title = "Login Now", isSending = state.isSending) {
+            eventHandler.invoke(LoginEvent.LoginClick)
         }
-
-
-//        CommonTextField(
-//            value = state.value.email,
-//            placeholder = "Your Login",
-//            isSending = state.value.isSending
-//        ) {
-//            viewModel.obtainEvent(LoginEvent.EmailChanged(it))
-//        }
-//
-//        Spacer(modifier = Modifier.height(24.dp))
-//
-//        CommonTextField(
-//            value = state.value.password,
-//            placeholder = "Your Password",
-//            isSending = state.value.isSending,
-//            isTextHidden = state.value.passwordHidden,
-//            trailingIcon = {
-//                Icon(
-//                    modifier = Modifier.clickable {
-//                        viewModel.obtainEvent(LoginEvent.PasswordShowClick)
-//                    },
-//                    imageVector = if (state.value.passwordHidden) {
-//                        Icons.Outlined.Clear
-//                    } else {
-//                        Icons.Outlined.Lock
-//                    },
-//                    contentDescription = "Password hidden",
-//                    tint = Theme.colors.hintTextColor
-//                )
-//            }
-//        ) {
-//            viewModel.obtainEvent(LoginEvent.PasswordChanged(it))
-//        }
-//
-//        Spacer(modifier = Modifier.height(84.dp))
-//
-//        ActionButton(title = "Login Now", isSending = state.value.isSending) {
-//            viewModel.obtainEvent(LoginEvent.LoginClick)
-//        }
     }
 }

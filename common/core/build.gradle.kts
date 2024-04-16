@@ -2,6 +2,7 @@ plugins {
     id("multiplatform-setup")
     id("android-setup")
     kotlin("plugin.serialization")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -22,29 +23,38 @@ kotlin {
 
                 api(Dependencies.Kodein.core)
 
-//                api(Dependencies.SqlDelight.core)
+                api(Dependencies.SqlDelight.core)
             }
         }
 
         androidMain {
             dependencies {
                 implementation(Dependencies.Ktor.android)
-//                implementation(Dependencies.SqlDelight.android)
+                implementation(Dependencies.SqlDelight.android)
             }
         }
 
         iosMain {
             dependencies {
                 implementation(Dependencies.Ktor.ios)
-//                implementation(Dependencies.SqlDelight.ios)
+                implementation(Dependencies.SqlDelight.ios)
             }
         }
 
         desktopMain{
             dependencies{
                 implementation(Dependencies.Ktor.okhttp)
-//                implementation(Dependencies.SqlDelight.desktop)
+                implementation(Dependencies.SqlDelight.desktop)
             }
         }
+    }
+}
+
+
+sqldelight{
+    database("DataBase"){
+        packageName = "com.example.kmp_playzone"
+        schemaOutputDirectory = file("src/commonMain/sqldelight/databases/schema")
+        migrationOutputDirectory = file("src/commonMain/sqldelight/databases/migrations")
     }
 }
