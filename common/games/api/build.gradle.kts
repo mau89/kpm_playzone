@@ -1,15 +1,13 @@
 plugins {
     id("multiplatform-setup")
-    id("android-setup")
-    kotlin("plugin.serialization")
+    id(libs.plugins.serialization.get().pluginId)
 }
 
+android.namespace = "com.example.kmp_playzone.common.games.api"
 kotlin {
     sourceSets {
-        commonMain {
-            dependencies {
-                implementation(Dependencies.Kotlin.Serialization.serialization)
+        commonMain.dependencies {
+                implementation(libs.kotlinx.serialization.core)
             }
         }
     }
-}

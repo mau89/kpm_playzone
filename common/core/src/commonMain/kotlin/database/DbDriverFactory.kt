@@ -1,8 +1,12 @@
 package database
 
-import com.squareup.sqldelight.db.SqlDriver
 import PlatformConfiguration
+import app.cash.sqldelight.db.QueryResult
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.db.SqlSchema
 
 expect class DbDriverFactory(platformConfiguration: PlatformConfiguration) {
-    fun createDriver(schema: SqlDriver.Schema, name: String): SqlDriver
+    suspend fun provideDbDriver(
+        schema: SqlSchema<QueryResult.AsyncValue<Unit>>
+    ): SqlDriver
 }

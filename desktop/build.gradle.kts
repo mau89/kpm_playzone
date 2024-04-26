@@ -19,9 +19,9 @@ kotlin {
                 implementation(project(":common:auth:compose"))
                 implementation(project(":common:umbrella-core"))
                 implementation(project(":common:umbrella-compose"))
-
-                implementation(Dependencies.Other.Navigation.core)
-                implementation(Dependencies.Other.Navigation.compose)
+//
+//                implementation(Dependencies.Other.Navigation.core)
+//                implementation(Dependencies.Other.Navigation.compose)
             }
         }
         named("jvmMain"){

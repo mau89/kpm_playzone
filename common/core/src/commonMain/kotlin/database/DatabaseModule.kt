@@ -11,9 +11,9 @@ internal val databaseModule = DI.Module("databaseModule") {
         DbDriverFactory(instance())
     }
 
-    bind<DataBase>() with singleton {
-        val driverFactory = instance<DbDriverFactory>()
-        val driver = driverFactory.createDriver(DataBase.Schema, "kmp_playzone.db")
-        DataBase(driver)
-    }
+//    bind<DataBase>() with singleton {
+//        val driverFactory = instance<DbDriverFactory>()
+//        val driver = driverFactory.provideDbDriver(DataBase.Schema)
+//        DataBase(driver)
+//    }
 }

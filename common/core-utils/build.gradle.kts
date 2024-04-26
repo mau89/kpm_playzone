@@ -1,4 +1,5 @@
 plugins {
     id("multiplatform-setup")
-    id("android-setup")
 }
+
+android.namespace = "com.example.kmp_playzone.common.core_utils"

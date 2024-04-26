@@ -1,13 +1,15 @@
 package sqldelight
 
 import com.example.kmp_playzone.DataBase
+import database.DbDriverFactory
 import ktor.KtorGamesDataSource
 import ktor.models.KtorSearchGame
 import models.Game
 
-class SqlDelightGamesDataSource(val dataBase: DataBase) {
+class SqlDelightGamesDataSource(private val dbDriverFactory: DbDriverFactory) {
 
-    fun fetchLocalGames(): List<Game> {
+    suspend fun fetchLocalGames(): List<Game> {
+        val dataBase = DataBase(dbDriverFactory.provideDbDriver(DataBase.Schema ))
         return dataBase.gameQueries.getAllGames().executeAsList()
             .map {
                 Game(
@@ -17,7 +19,8 @@ class SqlDelightGamesDataSource(val dataBase: DataBase) {
             }
     }
 
-    fun insertGame(game: KtorSearchGame) {
+    suspend fun insertGame(game: KtorSearchGame) {
+        val dataBase = DataBase(dbDriverFactory.provideDbDriver(DataBase.Schema ))
         dataBase.gameQueries.insertGame(
             game_id = game.gameId,
             game_title = game.title,

@@ -1,12 +1,11 @@
 plugins {
-    id("multiplatform-compose-setup")
-    id("android-setup")
+    id("multiplatform-setup")
 }
 
-kotlin{
-    sourceSets{
-        commonMain{
-            dependencies{
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
                 implementation(project(":common:auth:compose"))
                 implementation(project(":common:auth:data"))
 
@@ -18,19 +17,21 @@ kotlin{
 
                 implementation(project(":common:main:compose"))
 
-                implementation(Dependencies.Other.ViewModel.core)
-                implementation(Dependencies.Other.ViewModel.compose)
-                implementation(Dependencies.Other.ViewModel.odyssey)
+                implementation(libs.kviewmodel.core)
+                implementation(libs.kviewmodel.compose)
+                implementation(libs.kviewmodel.odyssey)
 
-                implementation(Dependencies.Other.Navigation.compose)
-                implementation(Dependencies.Other.Navigation.core)
+                implementation(libs.odyssey.compose)
+                implementation(libs.odyssey.core)
             }
         }
 
-        androidMain{
-            dependencies{
-                implementation(Dependencies.Android.composeActivity)
+        androidMain {
+            dependencies {
+                implementation(libs.androidx.activity.compose)
             }
         }
     }
 }
+
+android.namespace = "com.example.kmp_playzone.common.umbrella_compose"
